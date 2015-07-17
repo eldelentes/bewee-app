@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<% if client_signed_in? %>
+		<%= link_to "Salir", destroy_client_session_path, method: :delete %>
+	<% else %>
+		<%= link_to "Registro", new_client_registration_path, class: "btn btn-primary btn-large" %>
+		<%= link_to "Entrar", new_client_session_path, class: "btn btn-primary btn-large" %>
+	<% end %>
 <%= yield %>
 
 </body>
